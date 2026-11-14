@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, CheckCircle2, ArrowRight, Heart } from 'lucide-react';
+import { Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
 import { BUSINESS_CONFIG } from '../config/business';
 
@@ -77,9 +77,13 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7 flex flex-col text-left"
           >
-            {/* Quote Badge */}
+            {/* Natural Tamil Beauty Quote & Philosophy Accent */}
             <div className="p-6 sm:p-7 rounded-3xl bg-cream-pink/70 border-l-4 border-burgundy shadow-sm mb-6">
-              <p className="font-serif italic text-lg sm:text-xl text-burgundy leading-relaxed">
+              {/* Tamil Quote 2: Subtle and Graceful */}
+              <p className="font-tamil font-medium text-lg sm:text-xl text-burgundy leading-[1.6] mb-2">
+                "ஒவ்வொரு பெண்ணின் அழகும் தனித்துவமானது."
+              </p>
+              <p className="font-serif italic text-sm sm:text-base text-rose-burgundy leading-relaxed">
                 "{BUSINESS_CONFIG.artist.bioIntro}"
               </p>
             </div>
@@ -121,6 +125,31 @@ export default function About() {
           </motion.div>
 
         </div>
+
+        {/* Natural Tamil Beauty Quote Ribbon between About & Gallery */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 sm:mt-24 pt-10 border-t border-blush/60 text-center max-w-2xl mx-auto"
+        >
+          <div className="inline-flex items-center justify-center gap-3 mb-2.5">
+            <span className="w-8 sm:w-12 h-[1px] bg-rose-dusty/40"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-burgundy"></span>
+            <span className="w-8 sm:w-12 h-[1px] bg-rose-dusty/40"></span>
+          </div>
+
+          {/* Tamil Quote 1: Crafted Dream Vision */}
+          <p className="font-tamil font-medium text-xl sm:text-2xl md:text-3xl text-burgundy tracking-wide leading-relaxed px-4">
+            "உங்கள் கனவு தோற்றம்… எங்கள் கைவண்ணத்தில்!"
+          </p>
+
+          <p className="font-serif italic text-xs sm:text-sm text-espresso/65 mt-1 tracking-wider">
+            Crafting your dream bridal vision with signature artistry
+          </p>
+        </motion.div>
+
       </div>
     </section>
   );
