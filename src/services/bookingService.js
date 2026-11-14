@@ -1,64 +1,48 @@
 /**
- * SS BEAUTY PARLOUR - Booking Submission Service
+ * SS BEAUTY PARLOUR - WhatsApp Booking Submission Service
  * 
- * Separates backend/form provider integration logic from UI components.
- * Supports configurable endpoints (Formspree, Web3Forms, Serverless Functions),
- * with automatic elegant WhatsApp fallback when no external endpoint is configured.
+ * WhatsApp-first reservation workflow.
+ * IMPORTANT: No email booking or notifications. Uses strictly WhatsApp,
+ * direct phone dialling, and Instagram.
  */
 
-import { BUSINESS_CONFIG, generateWhatsAppBookingUrl } from '../config/business';
+import { BUSINESS_CONFIG, generateWhatsAppBookingUrl } from '../config/business.js';
 
-export async function submitBookingForm(formData) {
-  const endpoint = BUSINESS_CONFIG.contact.bookingApiEndpoint;
-
-  // If a serverless endpoint or form service is configured, dispatch the request
-  if (endpoint && endpoint.trim() !== '') {
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error(`Submission failed with status ${response.status}`);
-      }
-
-      return {
-        success: true,
-        method: 'api',
-        message: 'Your booking inquiry has been successfully sent. Silambarasi will contact you shortly!'
-      };
-    } catch (err) {
-      console.error('API submission error:', err);
-      return {
-        success: false,
-        method: 'api',
-        error: err.message || 'Failed to submit form to server.'
-      };
-    }
+function formatDisplayDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const dateObj = new Date(y, m - 1, d);
+    return dateObj.toLocaleDateString('en-IN', {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+  } catch {
+    return dateStr;
   }
+}
 
-  // When no backend is configured, generate prefilled WhatsApp link
-  // and return transparent status without faking a saved database record
+export function prepareWhatsAppBooking(formData) {
+  const formattedDate = formatDisplayDate(formData.preferredDate) || formData.preferredDate;
+
   const whatsappUrl = generateWhatsAppBookingUrl({
     name: formData.fullName,
     phone: formData.phone,
     service: formData.service,
     eventType: formData.eventType,
-    date: formData.preferredDate,
+    date: formattedDate,
     location: formData.location,
-    message: formData.message
+    additionalRequirements: formData.additionalRequirements || formData.message
   });
 
   return {
     success: true,
-    method: 'whatsapp',
     whatsappUrl,
-    message:
-      'Booking details ready! Click below to send directly to Silambarasi via WhatsApp for immediate confirmation.'
+    businessPhone: BUSINESS_CONFIG.contact.phone,
+    businessCallUrl: BUSINESS_CONFIG.contact.callUrl,
+    businessWhatsAppUrl: BUSINESS_CONFIG.contact.whatsappUrl,
+    message: "Your booking request details have been prepared for WhatsApp. Please tap 'Send' inside WhatsApp to deliver your inquiry to Silambarasi. Confirmation is subject to slot availability."
   };
 }

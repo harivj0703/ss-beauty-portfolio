@@ -45,17 +45,18 @@ export const BUSINESS_CONFIG = {
   ],
   locationsSummary: "Thiruvannamalai · Chengam",
 
-  // Contact Information (Exact details provided)
+  // Contact Information (Strictly WhatsApp, Direct Call & Instagram - No Email Bookings)
   contact: {
     phone: "+91 9751972900",
     phoneRaw: "+919751972900",
-    whatsappNumber: "919751972900",
-    email: "ssbeautyparlour2528@gmail.com",
+    callUrl: "tel:+919751972900",
+    whatsappNumber: "+91 9751972900",
+    whatsappRaw: "919751972900",
+    whatsappUrl: "https://wa.me/919751972900",
     instagramHandle: "@silambu_makeup_artist_chengam",
     instagramUrl: "https://www.instagram.com/silambu_makeup_artist_chengam/",
     instagramButtonText: "FOLLOW ON INSTAGRAM",
-    googleMapsUrl: "https://maps.google.com/?q=SS+Beauty+Parlour+Thiruvannamalai",
-    bookingApiEndpoint: ""
+    googleMapsUrl: "https://maps.google.com/?q=SS+Beauty+Parlour+Thiruvannamalai"
   },
 
   // Key Highlights
@@ -85,6 +86,20 @@ export const BUSINESS_CONFIG = {
 
 /**
  * Generates a pre-filled WhatsApp click-to-chat URL with structured booking details.
+ * Exact format requested:
+ * Hello SS Beauty Parlour!
+ * 
+ * I would like to enquire about a makeup booking.
+ * 
+ * Name:
+ * Phone:
+ * Service:
+ * Event:
+ * Date:
+ * Location:
+ * Additional Requirements:
+ * 
+ * Please contact me regarding availability and booking details.
  */
 export function generateWhatsAppBookingUrl({
   name = "",
@@ -93,19 +108,19 @@ export function generateWhatsAppBookingUrl({
   eventType = "",
   date = "",
   location = "",
-  message = ""
+  additionalRequirements = ""
 } = {}) {
-  const number = BUSINESS_CONFIG.contact.whatsappNumber.replace(/[^0-9]/g, "");
+  const number = "919751972900";
   
-  let text = `Hello Silambarasi, I would like to inquire about booking an appointment with SS Beauty Parlour.\n\n`;
-  if (name) text += `*Name:* ${name}\n`;
-  if (phone) text += `*Phone:* ${phone}\n`;
-  if (service) text += `*Service:* ${service}\n`;
-  if (eventType) text += `*Event Type:* ${eventType}\n`;
-  if (date) text += `*Date:* ${date}\n`;
-  if (location) text += `*Location:* ${location}\n`;
-  if (message) text += `*Message:* ${message}\n`;
-  text += `\nPlease let me know your availability. Thank you!`;
+  const text = `Hello SS Beauty Parlour!\n\nI would like to enquire about a makeup booking.\n\nName: ${name || '-'}\nPhone: ${phone || '-'}\nService: ${service || '-'}\nEvent: ${eventType || '-'}\nDate: ${date || '-'}\nLocation: ${location || '-'}\nAdditional Requirements: ${additionalRequirements || 'None'}\n\nPlease contact me regarding availability and booking details.`;
 
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+}
+
+/**
+ * General quick-chat WhatsApp link
+ */
+export function getGeneralWhatsAppUrl(message = "Hello SS Beauty Parlour! I would like to enquire about your makeup artistry services.") {
+  const number = "919751972900";
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }

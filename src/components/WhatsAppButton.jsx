@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { MessageCircle } from 'lucide-react';
-import { BUSINESS_CONFIG, generateWhatsAppBookingUrl } from '../config/business';
+import { BUSINESS_CONFIG, getGeneralWhatsAppUrl } from '../config/business';
 
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
-    const url = generateWhatsAppBookingUrl({
-      message: "Hello Silambarasi, I would like to inquire about your bridal makeup and beauty artistry services."
-    });
+    const url = getGeneralWhatsAppUrl(
+      "Hello SS Beauty Parlour! I would like to enquire about a makeup booking."
+    );
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 

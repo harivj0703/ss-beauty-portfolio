@@ -1,21 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Instagram, MessageCircle, ExternalLink, Calendar } from 'lucide-react';
+import { MapPin, Phone, Instagram, MessageCircle, ExternalLink, Calendar, Sparkles } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
 import BookingForm from '../components/BookingForm';
-import { BUSINESS_CONFIG, generateWhatsAppBookingUrl } from '../config/business';
+import { BUSINESS_CONFIG, getGeneralWhatsAppUrl } from '../config/business';
 
 export default function Contact({ selectedService }) {
-  const openDirectWhatsApp = () => {
-    const url = generateWhatsAppBookingUrl({
-      message: "Hello Silambarasi, I would like to inquire about booking an appointment with SS Beauty Parlour."
-    });
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
+  const directWhatsAppUrl = getGeneralWhatsAppUrl(
+    "Hello Silambarasi! I would like to inquire about booking an appointment with SS Beauty Parlour."
+  );
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-gradient-to-b from-[#FFF8F6] via-[#FBE8EC]/60 to-[#FFF8F6] relative overflow-hidden">
-      {/* Background Blobs */}
+      {/* Ambient Decorative Blobs */}
       <div className="absolute top-10 left-10 w-96 h-96 rounded-blob bg-blush/30 blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 rounded-blob-alt bg-rose-dusty/20 blur-3xl pointer-events-none"></div>
 
@@ -23,18 +20,18 @@ export default function Contact({ selectedService }) {
         <SectionTitle
           eyebrow="RESERVATIONS & CONTACT"
           title="Connect with SS Beauty Parlour"
-          subtitle="Reserve your bridal date or request a personalized beauty consultation directly with Silambarasi."
+          subtitle="Reserve your bridal date or request a personalized beauty consultation directly with Silambarasi via WhatsApp, direct call, or Instagram."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
           
-          {/* Left Column: Business & Contact Information (5 cols) */}
+          {/* Left Column: Business Profile & Direct Contact Actions (5 cols) */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5 space-y-8 text-left"
+            className="lg:col-span-5 space-y-6 text-left"
           >
             {/* Brand Card with Bubbly Corners */}
             <div className="p-8 sm:p-9 rounded-[2.5rem] bg-warmwhite border-2 border-blush shadow-bubbly">
@@ -52,12 +49,12 @@ export default function Contact({ selectedService }) {
                 </div>
               </div>
 
-              <p className="font-serif italic text-base text-burgundy/90 leading-relaxed mb-6">
+              <p className="font-serif italic text-base text-burgundy/90 leading-relaxed mb-5">
                 "{BUSINESS_CONFIG.tagline}"
               </p>
 
-              <p className="text-sm text-espresso/75 font-sans font-light leading-relaxed mb-6">
-                Delivering bespoke bridal transformations, Muhurtham artistry, reception styling, and party glamour across Thiruvannamalai and Chengam.
+              <p className="text-xs sm:text-sm text-espresso/75 font-sans font-light leading-relaxed mb-6">
+                Specialized in bridal Muhurtham styling, reception glam, engagement looks, and artisan saree draping across Thiruvannamalai and Chengam.
               </p>
 
               {/* Service Locations Highlight */}
@@ -70,94 +67,129 @@ export default function Contact({ selectedService }) {
                   <div>• Thiruvannamalai, Tamil Nadu, India</div>
                   <div>• Chengam, Tamil Nadu, India</div>
                   <div className="text-[11px] text-rose-burgundy font-semibold mt-1.5">
-                    Available for on-location wedding venue bookings
+                    On-location wedding venue styling available across Tamil Nadu
                   </div>
                 </div>
               </div>
 
-              {/* Contact List with Exact Details */}
-              <div className="space-y-4 pt-2">
-                {/* Phone & WhatsApp */}
-                <div className="flex items-center gap-3.5 text-sm text-espresso">
-                  <div className="w-10 h-10 rounded-full bg-cream-pink text-rose-burgundy flex items-center justify-center shrink-0 shadow-xs">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase font-sans tracking-wider text-espresso/60 font-semibold">
-                      Phone / WhatsApp
+              {/* 3 Official Contact Channels */}
+              <div className="space-y-3.5 pt-1 border-t border-blush/60">
+                {/* 1. WhatsApp Contact (Primary) */}
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 hover:bg-emerald-50 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm">
+                      <MessageCircle className="w-5 h-5 fill-white text-[#25D366]" />
                     </div>
-                    <a
-                      href={`tel:${BUSINESS_CONFIG.contact.phoneRaw}`}
-                      className="font-sans font-semibold text-sm text-burgundy hover:underline"
-                    >
-                      {BUSINESS_CONFIG.contact.phone}
-                    </a>
+                    <div>
+                      <div className="text-[10px] uppercase font-sans tracking-wider text-emerald-800 font-bold">
+                        WhatsApp (Instant Enquiry)
+                      </div>
+                      <div className="font-sans font-semibold text-sm text-emerald-950">
+                        {BUSINESS_CONFIG.contact.phone}
+                      </div>
+                    </div>
                   </div>
+                  <a
+                    href={BUSINESS_CONFIG.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-[11px] font-sans font-bold uppercase tracking-wider shadow-xs transition-transform active:scale-95"
+                  >
+                    Chat
+                  </a>
                 </div>
 
-                {/* Email */}
-                <div className="flex items-center gap-3.5 text-sm text-espresso">
-                  <div className="w-10 h-10 rounded-full bg-cream-pink text-rose-burgundy flex items-center justify-center shrink-0 shadow-xs">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase font-sans tracking-wider text-espresso/60 font-semibold">
-                      Email Inquiries
+                {/* 2. Direct Mobile Call */}
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-warmwhite border border-blush hover:border-rose-burgundy/40 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-cream-pink text-rose-burgundy flex items-center justify-center shrink-0 shadow-xs">
+                      <Phone className="w-4 h-4 text-burgundy" />
                     </div>
-                    <a
-                      href={`mailto:${BUSINESS_CONFIG.contact.email}`}
-                      className="font-sans font-semibold text-sm text-burgundy hover:underline break-all"
-                    >
-                      {BUSINESS_CONFIG.contact.email}
-                    </a>
+                    <div>
+                      <div className="text-[10px] uppercase font-sans tracking-wider text-espresso/60 font-semibold">
+                        Direct Phone Call
+                      </div>
+                      <div className="font-sans font-semibold text-sm text-burgundy">
+                        {BUSINESS_CONFIG.contact.phone}
+                      </div>
+                    </div>
                   </div>
+                  <a
+                    href={BUSINESS_CONFIG.contact.callUrl}
+                    className="px-3.5 py-1.5 rounded-full bg-burgundy hover:bg-rose-burgundy text-warmwhite text-[11px] font-sans font-bold uppercase tracking-wider shadow-xs transition-transform active:scale-95"
+                  >
+                    Call Now
+                  </a>
                 </div>
 
-                {/* Instagram */}
-                <div className="flex items-center gap-3.5 text-sm text-espresso">
-                  <div className="w-10 h-10 rounded-full bg-cream-pink text-rose-burgundy flex items-center justify-center shrink-0 shadow-xs">
-                    <Instagram className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase font-sans tracking-wider text-espresso/60 font-semibold">
-                      Instagram Profile
+                {/* 3. Instagram Direct Message */}
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-warmwhite border border-blush hover:border-rose-burgundy/40 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                      <Instagram className="w-4 h-4 text-white" />
                     </div>
-                    <a
-                      href={BUSINESS_CONFIG.contact.instagramUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-sans font-semibold text-sm text-rose-burgundy hover:underline flex items-center gap-1"
-                    >
-                      {BUSINESS_CONFIG.contact.instagramHandle}
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    <div>
+                      <div className="text-[10px] uppercase font-sans tracking-wider text-espresso/60 font-semibold">
+                        Instagram Profile & DM
+                      </div>
+                      <div className="font-sans font-semibold text-sm text-rose-burgundy truncate max-w-[150px] sm:max-w-none">
+                        {BUSINESS_CONFIG.contact.instagramHandle}
+                      </div>
+                    </div>
                   </div>
+                  <a
+                    href={BUSINESS_CONFIG.contact.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-full bg-cream-pink hover:bg-rose-burgundy text-burgundy hover:text-warmwhite text-[11px] font-sans font-bold uppercase tracking-wider border border-blush shadow-xs transition-colors"
+                  >
+                    Instagram
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Direct WhatsApp Instant Booking Card (Method 2) */}
-            <div className="p-7 rounded-[2.5rem] bg-gradient-to-br from-emerald-600 to-teal-800 text-white shadow-xl">
-              <span className="text-[10px] uppercase font-sans tracking-widest text-emerald-200 font-bold">
-                DIRECT WHATSAPP CHAT
-              </span>
-              <h4 className="text-2xl font-display font-medium text-white mt-1">
+            <div className="p-7 rounded-[2.5rem] bg-gradient-to-br from-[#128C7E] to-[#075E54] text-white shadow-xl relative overflow-hidden">
+              <div className="absolute -right-4 -bottom-4 w-32 h-32 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+              
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-2 h-2 rounded-full bg-[#25D366]"></span>
+                <span className="text-[10px] uppercase font-sans tracking-widest text-emerald-200 font-bold">
+                  DIRECT WHATSAPP CHAT
+                </span>
+              </div>
+
+              <h4 className="text-xl sm:text-2xl font-display font-medium text-white mt-1">
                 Prefer Instant Chat?
               </h4>
-              <p className="text-xs font-sans text-white/90 mt-1 leading-relaxed">
-                Connect directly with Silambarasi on WhatsApp for date availability, bridal consultation, and quick confirmation.
+              <p className="text-xs font-sans text-white/90 mt-1.5 leading-relaxed">
+                Connect directly with Silambarasi on WhatsApp to check availability, ask styling questions, or request personalized wedding quotes.
               </p>
-              <button
-                onClick={openDirectWhatsApp}
-                className="mt-6 w-full py-3.5 rounded-full bg-white text-emerald-900 hover:bg-emerald-50 font-sans text-xs uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                Start WhatsApp Conversation
-              </button>
+              
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <a
+                  href={directWhatsAppUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3.5 px-5 rounded-full bg-white text-emerald-950 hover:bg-emerald-50 font-sans text-xs uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  <span>Start WhatsApp Chat</span>
+                </a>
+
+                <a
+                  href={BUSINESS_CONFIG.contact.callUrl}
+                  className="py-3.5 px-5 rounded-full bg-white/15 hover:bg-white/25 text-white font-sans text-xs uppercase tracking-widest font-bold border border-white/20 transition-all flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-4 h-4 text-emerald-200" />
+                  <span>Call Now</span>
+                </a>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive Website Booking Form (7 cols) */}
+          {/* Right Column: WhatsApp-First Reservation Form (7 cols) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

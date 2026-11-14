@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, MessageCircle, Sparkles } from 'lucide-react';
-import { BUSINESS_CONFIG, generateWhatsAppBookingUrl } from '../config/business';
+import { Menu, X, Calendar, MessageCircle, Sparkles, Phone } from 'lucide-react';
+import { BUSINESS_CONFIG, getGeneralWhatsAppUrl } from '../config/business';
 
 export default function Navbar({ onBookClick, onReplayIntro }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,9 +43,9 @@ export default function Navbar({ onBookClick, onReplayIntro }) {
   };
 
   const openWhatsApp = () => {
-    const url = generateWhatsAppBookingUrl({
-      message: "Hello Silambarasi, I would like to inquire about booking an appointment with SS Beauty Parlour."
-    });
+    const url = getGeneralWhatsAppUrl(
+      "Hello SS Beauty Parlour! I would like to enquire about a makeup booking."
+    );
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -204,16 +204,26 @@ export default function Navbar({ onBookClick, onReplayIntro }) {
               Book An Appointment
             </button>
 
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openWhatsApp();
-              }}
-              className="w-full py-3 rounded-full border border-emerald-600/30 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-600" />
-              Chat on WhatsApp
-            </button>
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <a
+                href={BUSINESS_CONFIG.contact.callUrl}
+                className="py-3 rounded-full border border-burgundy/30 text-burgundy bg-cream-pink/50 hover:bg-cream-pink font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5"
+              >
+                <Phone className="w-3.5 h-3.5 text-burgundy" />
+                Call Now
+              </a>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openWhatsApp();
+                }}
+                className="py-3 rounded-full border border-emerald-600/30 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5"
+              >
+                <MessageCircle className="w-3.5 h-3.5 text-emerald-600 fill-[#25D366]" />
+                WhatsApp
+              </button>
+            </div>
           </div>
         </div>
       </div>
