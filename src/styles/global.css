@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #302720;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(198, 163, 106, 0.25);
+    color: #302720;
+  }
+
+  /* Custom Luxury Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FAF7F2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C6A36A;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A88247;
+  }
+}
+
+@layer utilities {
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #DFBF8A 0%, #C6A36A 50%, #9E7A3E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-gradient-bg {
+    background: linear-gradient(135deg, #E5C78D 0%, #C6A36A 50%, #B58E52 100%);
+  }
+
+  .gold-border-gradient {
+    border-image: linear-gradient(to right, transparent, #C6A36A, transparent) 1;
+  }
+
+  .editorial-shadow {
+    box-shadow: 0 25px 50px -12px rgba(48, 39, 32, 0.08);
+  }
+
+  .editorial-border {
+    border: 1px solid rgba(198, 163, 106, 0.25);
+  }
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

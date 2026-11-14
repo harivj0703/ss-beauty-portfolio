@@ -1,0 +1,36 @@
+/**
+ * SS BEAUTY PARLOUR - Fine-Grained Responsive Styles
+ * Ensuring pixel-perfect aesthetics from 360px mobile to 1440px+ ultra-wide screens.
+ */
+
+/* Mobile Fluid Constraints */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 11vw, 3.75rem);
+    line-height: 1.1;
+  }
+  
+  .section-heading {
+    font-size: clamp(1.85rem, 7vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  .lightbox-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Touch-Friendly Drag Slider for Transformations */
+.comparison-slider-thumb {
+  touch-action: none;
+  cursor: ew-resize;
+}
