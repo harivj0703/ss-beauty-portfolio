@@ -49,6 +49,8 @@ export default {
         serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         display: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
         script: ['"Pinyon Script"', '"Alex Brush"', 'cursive'],
+        tamil: ['"Noto Serif Tamil"', '"Noto Sans Tamil"', 'serif'],
+        tamilSans: ['"Noto Sans Tamil"', 'sans-serif'],
         sans: ['Poppins', 'Inter', 'sans-serif'],
       },
       borderRadius: {

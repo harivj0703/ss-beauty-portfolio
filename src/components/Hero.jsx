@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, ArrowRight, MapPin, Sparkles, Award, Heart } from 'lucide-react';
+import { Calendar, ArrowRight, MapPin, Sparkles, Award } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 
 export default function Hero({ onBookClick }) {
@@ -22,7 +22,7 @@ export default function Hero({ onBookClick }) {
       <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full bg-cream-pink/50 blur-2xl pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column: Asymmetrical Editorial Typography (7 cols on lg) */}
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
@@ -143,7 +143,7 @@ export default function Hero({ onBookClick }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="lg:col-span-5 relative flex justify-center items-center"
+            className="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0 pt-4"
           >
             {/* Background Organic Floating Layer */}
             <div className="absolute -inset-4 rounded-blob bg-gradient-to-tr from-blush to-cream-pink -z-10 opacity-70 transform rotate-3 animate-float-slow"></div>
@@ -161,9 +161,9 @@ export default function Hero({ onBookClick }) {
               />
 
               {/* Romantic Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-burgundy/70 via-transparent to-transparent opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent opacity-60"></div>
 
-              {/* Floating Pill Tag at Bottom */}
+              {/* Caption Pill at Bottom */}
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-warmwhite/90 backdrop-blur-md border border-rose-dusty/30 shadow-lg text-left">
                 <div className="flex items-center justify-between">
                   <div>
@@ -181,25 +181,26 @@ export default function Hero({ onBookClick }) {
               </div>
             </div>
 
-            {/* Floating Organic Experience Badge */}
+            {/* REPOSITIONED: Floating Experience Bubble (Clean top-right placement with zero overlapping) */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: -15, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -bottom-4 -left-4 sm:bottom-6 sm:-left-6 bg-warmwhite p-4 rounded-2xl shadow-xl border border-blush flex items-center gap-3 z-20"
+              className="absolute -top-4 right-2 sm:-top-6 sm:-right-4 lg:-top-6 lg:-right-6 bg-warmwhite/95 backdrop-blur-md px-4 py-3 sm:px-5 sm:py-3.5 rounded-full sm:rounded-[2rem] shadow-bubbly border-2 border-blush flex items-center gap-3 z-30 max-w-[230px] sm:max-w-none transition-transform hover:scale-105"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-burgundy to-rose-burgundy flex items-center justify-center font-display font-bold text-xl text-warmwhite shadow-sm">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-burgundy to-rose-burgundy flex items-center justify-center font-display font-bold text-lg sm:text-xl text-warmwhite shadow-sm shrink-0">
                 6+
               </div>
               <div className="text-left">
-                <div className="text-xs font-sans font-bold uppercase tracking-wider text-burgundy">
-                  Years of Artistry
+                <div className="text-[11px] sm:text-xs font-sans font-bold uppercase tracking-wider text-burgundy leading-tight">
+                  Years Artistry
                 </div>
-                <div className="text-[11px] text-espresso/70 font-sans">
-                  Silambarasi
+                <div className="text-[10px] sm:text-[11px] text-espresso/70 font-sans leading-tight mt-0.5">
+                  Thiruvannamalai & Chengam
                 </div>
               </div>
             </motion.div>
+
           </motion.div>
 
         </div>

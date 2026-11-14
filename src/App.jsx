@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ExperienceHighlights from './components/ExperienceHighlights';
 import About from './sections/About';
+import TamilQuotes from './components/TamilQuotes';
 import Portfolio from './sections/Portfolio';
 import Transformations from './sections/Transformations';
 import Services from './sections/Services';
@@ -69,6 +70,7 @@ export default function App() {
         <Hero onBookClick={handleBookClick} />
         <ExperienceHighlights />
         <About />
+        <TamilQuotes />
         <Portfolio />
         <Transformations />
         <Services onSelectService={handleSelectService} />
