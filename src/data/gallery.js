@@ -9,6 +9,20 @@
  * - Reception
  * - Party Makeup
  * - Hairstyling
+ * 
+ * NOTE ON CLIENT IMAGES:
+ * Successfully updated with actual photos from C:\Users\Hp\Pictures\SS-BEAUTY_PORTFOLIO:
+ * - Bridal 1: /images/bridal/bridal-01.jpeg (from BRIDAL 1.jpeg)
+ * - Bridal 2: /images/bridal/bridal-02.jpeg (from BRIDAL 2.jpeg)
+ * - Engagement 1: /images/engagement/engagement-01.jpg (from ENGAGEMENT 1.jpg)
+ * - Reception 1: /images/reception/reception-01.jpeg (from RECEPTION 1.jpeg)
+ * - Reception 2: /images/reception/reception-02.jpg (from RECEPTION 2.jpg)
+ * - Hairstyling 1: /images/party/hairstyling-01.jpeg (from HAIR STYLE 1.jpeg)
+ * 
+ * Pending slots awaiting user upload:
+ * - Bridal 3 (id: 5): /images/bridal/bridal-03.webp
+ * - Engagement 2 (id: 7): /images/engagement/engagement-02.webp
+ * - Bridal 4 (id: 11): /images/bridal/bridal-04.webp
  */
 
 export const GALLERY_CATEGORIES = [
@@ -25,7 +39,7 @@ export const GALLERY_ITEMS = [
     id: 1,
     title: "Traditional South Indian Muhurtham Look",
     category: "Bridal",
-    image: "/images/bridal/bridal-01.webp",
+    image: "/images/bridal/bridal-01.jpeg", // Updated with BRIDAL 1.jpeg
     aspect: "tall",
     description: "Classic South Indian bridal elegance with radiant base, antique gold eye accent, and traditional temple jewelry coordination.",
     details: "Thiruvannamalai Muhurtham · Kanjivaram Styling"
@@ -34,7 +48,7 @@ export const GALLERY_ITEMS = [
     id: 2,
     title: "Royal Crimson Bridal Elegance",
     category: "Bridal",
-    image: "/images/bridal/bridal-02.webp",
+    image: "/images/bridal/bridal-02.jpeg", // Updated with BRIDAL 2.jpeg
     aspect: "standard",
     description: "Deep crimson undertones with soft contoured cheeks, defined kohl eyes, and a timeless matte bridal finish.",
     details: "Bridal Artistry by Silambarasi"
@@ -43,7 +57,7 @@ export const GALLERY_ITEMS = [
     id: 3,
     title: "Luminous Daytime Engagement Glow",
     category: "Engagement",
-    image: "/images/engagement/engagement-01.webp",
+    image: "/images/engagement/engagement-01.jpg", // Updated with ENGAGEMENT 1.jpg
     aspect: "tall",
     description: "Dewy, glass-skin engagement makeup featuring pastel peach blush and delicate champagne shimmer lids.",
     details: "Chengam Engagement Celebration"
@@ -52,7 +66,7 @@ export const GALLERY_ITEMS = [
     id: 4,
     title: "Modern Glam Reception Look",
     category: "Reception",
-    image: "/images/reception/reception-01.webp",
+    image: "/images/reception/reception-01.jpeg", // Updated with RECEPTION 1.jpeg
     aspect: "standard",
     description: "High-drama smokey winged liner, sculpted cheekbones, and velvet nude lips designed for stage lights.",
     details: "Evening Reception Stage Glam"
@@ -61,7 +75,7 @@ export const GALLERY_ITEMS = [
     id: 5,
     title: "Temple Bride Signature Artistry",
     category: "Bridal",
-    image: "/images/bridal/bridal-03.webp",
+    image: "/images/bridal/bridal-03.webp", // [Pending slot for Bridal 3]
     aspect: "tall",
     description: "Authentic temple wedding styling with micro-fine HD foundation, forehead thilakam, and heirloom ornaments.",
     details: "Thiruvannamalai Temple Wedding"
@@ -70,7 +84,7 @@ export const GALLERY_ITEMS = [
     id: 6,
     title: "Traditional Poola Jada Artisan Hair",
     category: "Hairstyling",
-    image: "/images/party/hairstyling-01.webp",
+    image: "/images/party/hairstyling-01.jpeg", // Updated with HAIR STYLE 1.jpeg
     aspect: "standard",
     description: "Intricately woven floral bridal braid adorned with fresh mallipoo jasmine and handcrafted temple billas.",
     details: "Bridal Artisan Hair Creation"
@@ -79,7 +93,7 @@ export const GALLERY_ITEMS = [
     id: 7,
     title: "Romantic Rose Gold Engagement",
     category: "Engagement",
-    image: "/images/engagement/engagement-02.webp",
+    image: "/images/engagement/engagement-02.webp", // [Pending slot for Engagement 2]
     aspect: "standard",
     description: "Soft rose gold lids, sculpted definition, and satin rose petal lips perfectly matched with a silk tissue drape.",
     details: "Contemporary Engagement Styling"
@@ -106,7 +120,7 @@ export const GALLERY_ITEMS = [
     id: 10,
     title: "Sultry Golden Hour Reception",
     category: "Reception",
-    image: "/images/reception/reception-02.webp",
+    image: "/images/reception/reception-02.jpg", // Updated with RECEPTION 2.jpg
     aspect: "tall",
     description: "Gilded bronze eye highlights with glass skin finish, created for evening gala celebrations.",
     details: "Outdoor Evening Reception"
@@ -115,7 +129,7 @@ export const GALLERY_ITEMS = [
     id: 11,
     title: "Graceful Pastel Bride",
     category: "Bridal",
-    image: "/images/bridal/bridal-04.webp",
+    image: "/images/bridal/bridal-04.webp", // [Pending slot for Bridal 4]
     aspect: "standard",
     description: "Ethereal pastel bridal styling with soft pink eyeshadow wash, natural feathered brows, and blush lips.",
     details: "Modern South Indian Bridal Look"

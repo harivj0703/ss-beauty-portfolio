@@ -154,7 +154,7 @@ export default function Hero({ onBookClick }) {
             {/* Main Portrait Frame with Organic Curves */}
             <div className="relative w-full max-w-md aspect-[3/4] rounded-blob overflow-hidden shadow-2xl border-4 border-warmwhite bg-cream-pink group">
               <img
-                src="/images/hero/hero-bride.webp"
+                src="/images/hero/hero-bride.jpeg"
                 alt="SS Beauty Parlour - Professional Bridal Artistry by Silambarasi"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="eager"

@@ -21,11 +21,12 @@ export default function ServiceCard({ service, index = 0, onBookService }) {
       className={`group relative flex flex-col overflow-hidden bg-warmwhite border-2 border-blush/70 shadow-bubbly hover:shadow-bubbly-hover hover:-translate-y-2 transition-all duration-400 ${getCardShape(index)}`}
     >
       {/* Image Container with Organic Oval / Curved Bottom */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-cream-pink">
+      <div className={`relative ${service.aspect || 'aspect-square'} overflow-hidden bg-cream-pink`}>
         <img
           src={service.image}
           alt={service.title}
-          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-104"
+          style={{ objectPosition: service.imagePosition || 'center 20%' }}
           loading="lazy"
         />
 

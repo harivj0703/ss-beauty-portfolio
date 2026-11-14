@@ -46,9 +46,9 @@ export default function About() {
             {/* Double Border Organic Frame */}
             <div className="relative w-full max-w-md aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-warmwhite bg-cream-pink group">
               <img
-                src="/images/artist/silambarasi-portrait.webp"
+                src="/images/artist/silambarasi-portrait.jpeg"
                 alt="Silambarasi - Professional Makeup Artist at SS Beauty Parlour"
-                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
               />
 

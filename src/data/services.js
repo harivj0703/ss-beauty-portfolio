@@ -21,7 +21,8 @@ export const SERVICES_DATA = [
       "Traditional South Indian styling"
     ],
     duration: "2.5 - 3 Hours",
-    image: "/images/services/bridal-makeup.webp",
+    image: "/images/services/signature-bridal.jpeg", // Updated from SIGNATURE BRIDAL.jpeg
+    imagePosition: "center 18%", // Anchors at top 18% to show complete head, face, makeup and bridal saree
     isSignature: true,
     badge: "Most Requested"
   },
@@ -39,7 +40,8 @@ export const SERVICES_DATA = [
       "Hair styling coordination"
     ],
     duration: "2 - 2.5 Hours",
-    image: "/images/services/engagement-makeup.webp",
+    image: "/images/services/engagement-makeup.webp", // [Pending slot for user upload: 'Engagement makeup']
+    imagePosition: "center 20%",
     isSignature: false,
     badge: "Popular"
   },
@@ -57,7 +59,8 @@ export const SERVICES_DATA = [
       "Modern reception hairdo pairing"
     ],
     duration: "2 - 2.5 Hours",
-    image: "/images/services/reception-makeup.webp",
+    image: "/images/services/reception-makeup.jpeg", // Updated from RECEPTION 1.jpeg / reception makeup
+    imagePosition: "center 28%",
     isSignature: true,
     badge: "Signature Glam"
   },
@@ -75,7 +78,8 @@ export const SERVICES_DATA = [
       "Featherlight, breathable wear"
     ],
     duration: "2 Hours",
-    image: "/images/services/hd-makeup.webp",
+    image: "/images/services/hd-makeup.jpeg", // Updated from HD MAKEUP 1.jpeg
+    imagePosition: "center 20%",
     isSignature: false,
     badge: "Studio Finish"
   },
@@ -94,6 +98,7 @@ export const SERVICES_DATA = [
     ],
     duration: "1.5 Hours",
     image: "/images/services/party-makeup.webp",
+    imagePosition: "center 25%",
     isSignature: false
   },
   {
@@ -110,7 +115,8 @@ export const SERVICES_DATA = [
       "All-day structural hold without stiffness"
     ],
     duration: "1 - 1.5 Hours",
-    image: "/images/services/hairstyling.webp",
+    image: "/images/services/hairstyling.jpeg", // Updated from HAIR STYLE 1.jpeg / HAirstylemakeup
+    imagePosition: "center 20%",
     isSignature: false
   },
   {
@@ -127,7 +133,8 @@ export const SERVICES_DATA = [
       "Dupatta setting for lehengas"
     ],
     duration: "30 - 45 Mins",
-    image: "/images/services/saree-draping.webp",
+    image: "/images/services/saree-draping.jpeg", // Updated from SAREE DROPPING.jpeg
+    imagePosition: "center 30%",
     isSignature: false
   },
   {
@@ -144,7 +151,8 @@ export const SERVICES_DATA = [
       "Customizable group bookings"
     ],
     duration: "Flexible",
-    image: "/images/services/other-services.webp",
+    image: "/images/services/other-services.jpeg", // Updated from OTHER BEAUTY SERVICES.jpeg
+    imagePosition: "center center",
     isSignature: false
   }
 ];
