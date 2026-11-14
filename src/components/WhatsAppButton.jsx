@@ -20,7 +20,7 @@ export default function WhatsAppButton() {
           isHovered
             ? 'opacity-100 translate-x-0'
             : 'opacity-0 translate-x-2 pointer-events-none'
-        } bg-espresso text-ivory text-xs px-3 py-2 rounded-full shadow-lg border border-gold/30 font-sans tracking-wide`}
+        } bg-burgundy text-warmwhite text-xs px-3.5 py-2 rounded-full shadow-lg border border-blush/40 font-sans tracking-wide`}
       >
         Chat with Silambarasi
       </div>

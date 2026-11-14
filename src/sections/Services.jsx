@@ -14,35 +14,36 @@ export default function Services({ onSelectService }) {
   };
 
   return (
-    <section id="services" className="py-20 lg:py-28 bg-[#F0E8DE]/30 relative">
+    <section id="services" className="py-24 lg:py-32 bg-gradient-to-b from-[#FFF8F6] via-[#FBE8EC]/50 to-[#FFF8F6] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          eyebrow="BESPOKE BEAUTY EXPERIENCES"
-          title="Beauty Services"
-          subtitle="From grand wedding muhurthams to intimate family celebrations, discover specialized makeup artistry and hairstyling crafted with passion."
+          eyebrow="BESPOKE ARTISTRY"
+          title="Your Beauty, Our Artistry"
+          subtitle="From majestic South Indian Muhurtham bridal transformations to high-fashion reception looks, explore tailored artistry crafted with passion."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {SERVICES_DATA.map((service) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {SERVICES_DATA.map((service, index) => (
             <ServiceCard
               key={service.id}
               service={service}
+              index={index}
               onBookService={handleBookService}
             />
           ))}
         </div>
 
-        {/* Customized packages note */}
-        <div className="mt-12 text-center">
-          <p className="text-xs text-taupe font-sans tracking-wide">
-            Need a customized bridal package for your wedding entourage or multiple ceremonies?{' '}
+        {/* Personalized Consultation Callout */}
+        <div className="mt-14 text-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-warmwhite border border-blush shadow-bubbly text-xs text-espresso/80 font-sans">
+            <span>Planning a multi-day wedding or bridal party package?</span>
             <a
               href="#contact"
-              className="text-gold font-medium hover:underline ml-1"
+              className="text-burgundy font-semibold hover:text-rose-burgundy underline ml-1"
             >
-              Contact Silambarasi for bespoke consultation.
+              Consult directly with Silambarasi
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </section>

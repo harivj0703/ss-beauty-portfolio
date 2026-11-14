@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, MessageCircle } from 'lucide-react';
+import { Menu, X, Calendar, MessageCircle, Sparkles } from 'lucide-react';
 import { BUSINESS_CONFIG, generateWhatsAppBookingUrl } from '../config/business';
 
-export default function Navbar({ onBookClick }) {
+export default function Navbar({ onBookClick, onReplayIntro }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -22,8 +22,8 @@ export default function Navbar({ onBookClick }) {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Services', href: '#services' },
     { name: 'Transformations', href: '#transformations' },
+    { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -32,7 +32,7 @@ export default function Navbar({ onBookClick }) {
     setMobileMenuOpen(false);
     const target = document.querySelector(href);
     if (target) {
-      const topOffset = 80;
+      const topOffset = 90;
       const elementPosition = target.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - topOffset;
       window.scrollTo({
@@ -44,141 +44,142 @@ export default function Navbar({ onBookClick }) {
 
   const openWhatsApp = () => {
     const url = generateWhatsAppBookingUrl({
-      message: "Hello Silambarasi, I would like to book a makeup appointment."
+      message: "Hello Silambarasi, I would like to inquire about booking an appointment with SS Beauty Parlour."
     });
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-ivory/95 backdrop-blur-md shadow-sm border-b border-gold/20 py-3.5'
-            : 'bg-transparent py-5 sm:py-6'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Logo & Monogram */}
-          <a
-            href="#home"
-            onClick={(e) => handleLinkClick(e, '#home')}
-            className="flex items-center gap-3 group"
+      {/* Floating Pill Navigation Container */}
+      <header className="fixed top-4 sm:top-6 left-0 right-0 z-40 px-4 sm:px-6 pointer-events-none">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          
+          {/* Main Floating Nav Capsule */}
+          <div
+            className={`pointer-events-auto flex items-center justify-between w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-500 border ${
+              isScrolled
+                ? 'bg-warmwhite/90 backdrop-blur-md shadow-bubbly border-rose-dusty/30'
+                : 'bg-warmwhite/80 backdrop-blur-sm shadow-sm border-blush-soft/50'
+            }`}
           >
-            {/* Elegant SS Monogram */}
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-full border border-gold/60 bg-white/70 shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:border-gold">
-              <span className="font-display font-semibold text-lg text-gold tracking-tighter">
-                SS
-              </span>
-              <div className="absolute inset-0 rounded-full border border-gold/30 scale-110 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-
-            <div className="flex flex-col">
-              <span className="font-display font-semibold text-base sm:text-lg tracking-widest text-espresso uppercase group-hover:text-gold transition-colors">
-                SS Beauty Parlour
-              </span>
-              <span className="text-[10px] uppercase font-sans tracking-widest text-taupe font-medium">
-                Silambarasi · Artistry
-              </span>
-            </div>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="relative text-sm font-sans font-medium text-espresso/80 hover:text-gold transition-colors py-1 tracking-wide group"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-gold transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
-
-          {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={openWhatsApp}
-              title="Chat on WhatsApp"
-              className="p-2.5 rounded-full border border-gold/40 text-espresso hover:bg-gold/10 hover:border-gold transition-colors"
-              aria-label="WhatsApp quick chat"
+            {/* Left: Brand Monogram & Name */}
+            <a
+              href="#home"
+              onClick={(e) => handleLinkClick(e, '#home')}
+              className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
             >
-              <MessageCircle className="w-4 h-4 text-espresso" />
-            </button>
+              {/* Bubbly SS Monogram */}
+              <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-burgundy to-rose-burgundy text-warmwhite shadow-sm transition-transform duration-300 group-hover:scale-105">
+                <span className="font-display font-semibold text-sm sm:text-base tracking-tighter">
+                  SS
+                </span>
+              </div>
 
-            <button
-              onClick={() => {
-                if (onBookClick) onBookClick();
-                else {
-                  const el = document.querySelector('#contact');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="relative inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-gold hover:bg-gold-dark text-white font-sans text-xs uppercase tracking-widest font-medium shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <Calendar className="w-3.5 h-3.5" />
-                Book Appointment
-              </span>
-            </button>
-          </div>
+              <div className="flex flex-col text-left">
+                <span className="font-display font-medium text-xs sm:text-sm tracking-widest text-burgundy uppercase group-hover:text-rose-burgundy transition-colors">
+                  SS Beauty Parlour
+                </span>
+                <span className="text-[9px] uppercase font-sans tracking-widest text-rose-dusty font-semibold">
+                  Silambarasi · Artistry
+                </span>
+              </div>
+            </a>
 
-          {/* Mobile Hamburger Toggle */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-espresso hover:text-gold focus:outline-none"
-              aria-label="Toggle Navigation Menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-espresso" />
-              ) : (
-                <Menu className="w-6 h-6 text-espresso" />
-              )}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Drawer Menu */}
-      <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-espresso/50 backdrop-blur-sm"
-          onClick={() => setMobileMenuOpen(false)}
-        ></div>
-
-        {/* Sliding Panel */}
-        <div
-          className={`absolute top-0 right-0 w-4/5 max-w-sm h-full bg-ivory shadow-2xl flex flex-col justify-between p-6 pt-24 transition-transform duration-300 ease-out ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          <div className="space-y-6">
-            <div className="border-b border-gold/20 pb-4">
-              <span className="font-display font-medium text-xl text-espresso">
-                SS Beauty Parlour
-              </span>
-              <p className="text-xs text-taupe mt-1">
-                Silambarasi · Thiruvannamalai & Chengam
-              </p>
-            </div>
-
-            <nav className="flex flex-col space-y-4">
+            {/* Center: Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center space-x-1 sm:space-x-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="text-base font-sans font-medium text-espresso/80 hover:text-gold transition-colors py-1"
+                  className="px-3.5 py-1.5 rounded-full text-xs font-sans font-medium text-espresso/80 hover:text-burgundy hover:bg-cream-pink transition-all tracking-wide"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            {/* Right: Actions */}
+            <div className="flex items-center gap-2">
+              {/* WhatsApp Quick Icon */}
+              <button
+                onClick={openWhatsApp}
+                title="Chat on WhatsApp"
+                aria-label="Chat on WhatsApp"
+                className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366]/10 text-emerald-800 hover:bg-[#25D366] hover:text-white transition-all duration-300 shadow-sm"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </button>
+
+              {/* Pill Book Now Button */}
+              <button
+                onClick={() => {
+                  if (onBookClick) onBookClick();
+                  else {
+                    const el = document.querySelector('#contact');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full bg-burgundy hover:bg-burgundy-rose text-warmwhite font-sans text-xs uppercase tracking-widest font-semibold shadow-burgundy-glow hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Book Now</span>
+              </button>
+
+              {/* Mobile Hamburger Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 rounded-full text-burgundy hover:bg-cream-pink transition-colors focus:outline-none"
+                aria-label="Toggle Navigation Menu"
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-5 h-5 text-burgundy" />
+                ) : (
+                  <Menu className="w-5 h-5 text-burgundy" />
+                )}
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      {/* Mobile Drawer Menu */}
+      <div
+        className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-espresso/40 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        ></div>
+
+        {/* Sliding Panel */}
+        <div
+          className={`absolute top-0 right-0 w-4/5 max-w-sm h-full bg-[#FFF8F6] shadow-2xl flex flex-col justify-between p-6 pt-20 transition-transform duration-300 ease-out ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="space-y-6 text-left">
+            <div className="border-b border-blush pb-4">
+              <span className="font-display font-medium text-xl text-burgundy">
+                SS Beauty Parlour
+              </span>
+              <p className="text-xs text-rose-burgundy mt-0.5">
+                Silambarasi · Thiruvannamalai & Chengam
+              </p>
+            </div>
+
+            <nav className="flex flex-col space-y-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className="px-4 py-2.5 rounded-full text-sm font-sans font-medium text-espresso/80 hover:text-burgundy hover:bg-cream-pink transition-all"
                 >
                   {link.name}
                 </a>
@@ -186,8 +187,8 @@ export default function Navbar({ onBookClick }) {
             </nav>
           </div>
 
-          {/* Mobile CTAs */}
-          <div className="space-y-3 pt-6 border-t border-gold/20">
+          {/* Mobile Bottom Buttons */}
+          <div className="space-y-3 pt-6 border-t border-blush text-center">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -197,10 +198,10 @@ export default function Navbar({ onBookClick }) {
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="w-full py-3 rounded-full bg-gold hover:bg-gold-dark text-white font-sans text-xs uppercase tracking-widest font-medium text-center shadow-md flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-burgundy hover:bg-burgundy-rose text-warmwhite font-sans text-xs uppercase tracking-widest font-semibold shadow-md flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              Book Appointment
+              Book An Appointment
             </button>
 
             <button
@@ -208,7 +209,7 @@ export default function Navbar({ onBookClick }) {
                 setMobileMenuOpen(false);
                 openWhatsApp();
               }}
-              className="w-full py-3 rounded-full border border-emerald-600/40 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 font-sans text-xs uppercase tracking-widest font-medium text-center flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-full border border-emerald-600/30 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-4 h-4 text-emerald-600" />
               Chat on WhatsApp

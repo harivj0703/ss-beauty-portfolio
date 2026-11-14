@@ -1,19 +1,19 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Sliders, Sparkles, Columns, SplitSquareVertical, AlertCircle } from 'lucide-react';
+import { Sliders, Columns, SplitSquareVertical, AlertCircle, Sparkles } from 'lucide-react';
 
 export default function BeforeAfter() {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [activeSetIndex, setActiveSetIndex] = useState(0);
-  const [viewMode, setViewMode] = useState('slider'); // 'slider' or 'side-by-side'
+  const [viewMode, setViewMode] = useState('slider');
   const containerRef = useRef(null);
 
   const transformationSets = [
     {
       id: 1,
       title: "Bridal Muhurtham Transformation",
-      description: "Pre-makeup skin preparation elevated to radiant bridal glow with defined eyes and traditional bridal finish.",
+      description: "Pre-makeup skin preparation elevated to radiant South Indian bridal glow with defined eyes and traditional bridal finish.",
       beforeImage: "/images/transformations/before-01.webp",
       afterImage: "/images/transformations/after-01.webp",
       details: "Muhurtham Look · HD Finish"
@@ -52,7 +52,7 @@ export default function BeforeAfter() {
     <div className="max-w-5xl mx-auto">
       {/* Transformation Set Tabs & Mode Toggle */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-        {/* Set Selector */}
+        {/* Set Selector Pills */}
         <div className="flex items-center gap-2">
           {transformationSets.map((set, idx) => (
             <button
@@ -61,10 +61,10 @@ export default function BeforeAfter() {
                 setActiveSetIndex(idx);
                 setSliderPosition(50);
               }}
-              className={`px-4 py-2 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all ${
+              className={`px-5 py-2 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-all duration-300 ${
                 activeSetIndex === idx
-                  ? 'bg-espresso text-ivory shadow-md'
-                  : 'bg-white/80 hover:bg-white text-taupe border border-gold/20'
+                  ? 'bg-burgundy text-warmwhite shadow-burgundy-glow'
+                  : 'bg-warmwhite hover:bg-cream-pink text-burgundy/80 border border-blush'
               }`}
             >
               Look {idx + 1}: {set.title.split(' ')[0]}
@@ -73,13 +73,13 @@ export default function BeforeAfter() {
         </div>
 
         {/* View Mode Toggle: Slider vs Side-by-Side */}
-        <div className="flex items-center p-1 rounded-full bg-white/80 border border-gold/30">
+        <div className="flex items-center p-1 rounded-full bg-warmwhite border border-blush shadow-xs">
           <button
             onClick={() => setViewMode('slider')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans tracking-wide transition-colors ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-sans tracking-wide transition-all ${
               viewMode === 'slider'
-                ? 'bg-gold text-white font-medium'
-                : 'text-taupe hover:text-espresso'
+                ? 'bg-rose-burgundy text-warmwhite font-semibold shadow-xs'
+                : 'text-espresso/70 hover:text-burgundy'
             }`}
           >
             <SplitSquareVertical className="w-3.5 h-3.5" />
@@ -87,10 +87,10 @@ export default function BeforeAfter() {
           </button>
           <button
             onClick={() => setViewMode('side-by-side')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans tracking-wide transition-colors ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-sans tracking-wide transition-all ${
               viewMode === 'side-by-side'
-                ? 'bg-gold text-white font-medium'
-                : 'text-taupe hover:text-espresso'
+                ? 'bg-rose-burgundy text-warmwhite font-semibold shadow-xs'
+                : 'text-espresso/70 hover:text-burgundy'
             }`}
           >
             <Columns className="w-3.5 h-3.5" />
@@ -99,9 +99,8 @@ export default function BeforeAfter() {
         </div>
       </div>
 
-      {/* Main Comparison Display */}
+      {/* Main Comparison Container with Rounded Organic Styling */}
       {viewMode === 'slider' ? (
-        /* Interactive Split Slider */
         <div
           ref={containerRef}
           onMouseDown={() => setIsDragging(true)}
@@ -111,7 +110,7 @@ export default function BeforeAfter() {
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
           onTouchMove={handleTouchMove}
-          className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-gold/40 select-none bg-beige-soft cursor-ew-resize"
+          className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-warmwhite select-none bg-cream-pink cursor-ew-resize"
         >
           {/* After Image (Full Background) */}
           <img
@@ -120,8 +119,8 @@ export default function BeforeAfter() {
             className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
           />
 
-          {/* After Label (Bottom Right) */}
-          <div className="absolute bottom-5 right-5 px-3.5 py-1.5 rounded-full bg-espresso/80 backdrop-blur-md text-ivory text-xs uppercase tracking-widest font-sans font-medium border border-gold/30 pointer-events-none z-10">
+          {/* After Pill Label */}
+          <div className="absolute bottom-6 right-6 px-4 py-2 rounded-full bg-burgundy/85 backdrop-blur-md text-warmwhite text-xs uppercase tracking-widest font-sans font-semibold border border-white/20 pointer-events-none z-10 shadow-lg">
             After Artistry
           </div>
 
@@ -139,71 +138,69 @@ export default function BeforeAfter() {
                 height: '100%'
               }}
             />
-            {/* Before Label (Bottom Left) */}
-            <div className="absolute bottom-5 left-5 px-3.5 py-1.5 rounded-full bg-espresso/80 backdrop-blur-md text-ivory text-xs uppercase tracking-widest font-sans font-medium border border-gold/30 pointer-events-none z-10">
+            {/* Before Pill Label */}
+            <div className="absolute bottom-6 left-6 px-4 py-2 rounded-full bg-espresso/80 backdrop-blur-md text-warmwhite text-xs uppercase tracking-widest font-sans font-semibold border border-white/20 pointer-events-none z-10 shadow-lg">
               Before
             </div>
           </div>
 
-          {/* Drag Divider Line & Handle */}
+          {/* Drag Divider Line & Bubbly Handle */}
           <div
-            className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] z-20 pointer-events-none"
+            className="absolute top-0 bottom-0 w-1 bg-warmwhite shadow-[0_0_15px_rgba(100,29,53,0.4)] z-20 pointer-events-none"
             style={{ left: `${sliderPosition}%` }}
           >
-            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-xl border-2 border-gold flex items-center justify-center text-espresso pointer-events-auto cursor-ew-resize">
-              <Sliders className="w-4 h-4 text-gold rotate-90" />
+            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-warmwhite shadow-2xl border-2 border-rose-burgundy flex items-center justify-center text-burgundy pointer-events-auto cursor-ew-resize hover:scale-110 active:scale-95 transition-transform">
+              <Sliders className="w-4 h-4 text-burgundy rotate-90" />
             </div>
           </div>
         </div>
       ) : (
-        /* Side by Side Mode */
+        /* Side by Side Mode with Organic Rounded Cards */
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Before Card */}
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-gold/30 bg-beige-soft group">
+          <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg border-2 border-blush bg-cream-pink group">
             <img
               src={currentSet.beforeImage}
               alt="Before Artistry"
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-espresso/80 text-white text-xs uppercase tracking-widest font-sans font-medium backdrop-blur-sm">
+            <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-espresso/80 text-warmwhite text-xs uppercase tracking-widest font-sans font-semibold backdrop-blur-sm">
               Before
             </div>
           </div>
 
-          {/* After Card */}
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-gold/30 bg-beige-soft group">
+          <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg border-2 border-blush bg-cream-pink group">
             <img
               src={currentSet.afterImage}
               alt="After Artistry"
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-gold text-white text-xs uppercase tracking-widest font-sans font-medium backdrop-blur-sm">
+            <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-burgundy text-warmwhite text-xs uppercase tracking-widest font-sans font-semibold backdrop-blur-sm shadow-sm">
               After Artistry
             </div>
           </div>
         </div>
       )}
 
-      {/* Description & Instruction Card */}
-      <div className="mt-6 p-6 rounded-2xl bg-white/70 border border-gold/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      {/* Description Pill Box */}
+      <div className="mt-6 p-6 rounded-3xl bg-warmwhite border border-blush shadow-bubbly flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-left">
         <div>
-          <h3 className="text-lg font-display font-medium text-espresso">
+          <h3 className="text-xl font-display font-medium text-burgundy">
             {currentSet.title}
           </h3>
-          <p className="text-sm text-taupe font-sans mt-0.5">
+          <p className="text-sm text-espresso/75 font-sans mt-0.5">
             {currentSet.description}
           </p>
         </div>
-        <div className="text-xs uppercase font-sans font-semibold tracking-wider text-gold shrink-0">
+        <div className="text-xs uppercase font-sans font-bold tracking-wider text-rose-burgundy shrink-0 px-4 py-1.5 rounded-full bg-cream-pink border border-blush">
           {currentSet.details}
         </div>
       </div>
 
-      {/* Transparent Editorial Disclaimer (As specified in prompt) */}
-      <div className="mt-4 flex items-center gap-2 text-xs text-taupe/80 italic font-sans px-2">
-        <AlertCircle className="w-3.5 h-3.5 text-gold shrink-0" />
+      {/* Honest Disclaimer */}
+      <div className="mt-4 flex items-center gap-2 text-xs text-espresso/70 italic font-sans px-2">
+        <AlertCircle className="w-3.5 h-3.5 text-rose-burgundy shrink-0" />
         <span>
-          Note: Visual demonstration placeholders shown above during initial release. Client transformations will be updated with actual wedding photographs upon client consent.
+          Note: Visual demonstration placeholders shown above during initial portfolio release. Client transformations will feature actual wedding client photographs upon consent.
         </span>
       </div>
     </div>

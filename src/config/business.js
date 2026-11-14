@@ -3,19 +3,15 @@
  * 
  * Central configuration file for all business, contact, artist, and location details.
  * Any update here will automatically reflect across the entire website.
- * 
- * NOTE FOR ARTIST / OWNER:
- * Replace placeholder contact information (phone, WhatsApp, email, Instagram)
- * with your actual details when ready.
  */
 
 export const BUSINESS_CONFIG = {
   // Brand Identity
   brandName: "SS BEAUTY PARLOUR",
   brandMonogram: "SS",
-  tagline: "Beauty, Elevated.",
+  tagline: "Beauty is an Art. You are the Canvas.",
   description:
-    "SS Beauty Parlour represents professional makeup artistry, elegance, confidence and personalized beauty experiences.",
+    "SS Beauty Parlour represents professional makeup artistry, elegance, confidence and personalized beauty experiences by Silambarasi.",
   establishedYear: 2020,
   
   // Artist Profile
@@ -27,9 +23,9 @@ export const BUSINESS_CONFIG = {
     bioIntro:
       "Every face has its own beauty, and every occasion deserves a special touch.",
     bioFull:
-      "With over six years of experience in makeup artistry, Silambarasi believes in creating elegant, personalized looks that help every client feel confident and beautiful. At SS Beauty Parlour, every transformation is approached with care, creativity and meticulous attention to detail.",
+      "With over six years of experience in makeup artistry, Silambarasi believes in creating elegant, personalized looks that help every client feel confident and beautiful. At SS Beauty Parlour, every transformation is approached with care, creativity and attention to detail.",
     philosophy:
-      "Artistry is not about masking who you are; it is about enhancing your authentic elegance so you look and feel extraordinary on your most memorable days."
+      "Beauty is an Art. You are the Canvas. Every brushstroke is dedicated to enhancing your natural charm and celebrating your authentic radiance."
   },
 
   // Service Locations (Strictly based on provided business info)
@@ -49,31 +45,20 @@ export const BUSINESS_CONFIG = {
   ],
   locationsSummary: "Thiruvannamalai · Chengam",
 
-  // Contact Information (Editable Placeholders - to be updated with real info)
+  // Contact Information (Exact details provided)
   contact: {
-    // EDITABLE: Set your actual phone number here (e.g. "+91 98765 43210")
-    phone: "+91 98765 43210 (Update Number)",
-    phoneRaw: "+919876543210",
-
-    // EDITABLE: Set your WhatsApp number in international format without '+' (e.g. "919876543210")
-    whatsappNumber: "919876543210",
-
-    // EDITABLE: Set your professional email address
-    email: "contact@ssbeautyparlour.com",
-
-    // EDITABLE: Set your actual Instagram handle & profile URL
-    instagramHandle: "@ssbeautyparlour",
-    instagramUrl: "https://www.instagram.com",
-
-    // EDITABLE: Google Maps link or place ID
+    phone: "+91 9751972900",
+    phoneRaw: "+919751972900",
+    whatsappNumber: "919751972900",
+    email: "ssbeautyparlour2528@gmail.com",
+    instagramHandle: "@silambu_makeup_artist_chengam",
+    instagramUrl: "https://www.instagram.com/silambu_makeup_artist_chengam/",
+    instagramButtonText: "FOLLOW ON INSTAGRAM",
     googleMapsUrl: "https://maps.google.com/?q=SS+Beauty+Parlour+Thiruvannamalai",
-
-    // EDITABLE: Endpoint for website booking form submissions (Formspree, Web3Forms, or custom API)
-    // Leave empty to default to client-side WhatsApp instant booking modal
     bookingApiEndpoint: ""
   },
 
-  // Key Highlights (Strictly verified facts without invented numbers)
+  // Key Highlights
   highlights: [
     {
       metric: "6+ Years",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Sparkles, CheckCircle2, ArrowRight, Heart } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
 import { BUSINESS_CONFIG } from '../config/business';
 
@@ -11,63 +11,65 @@ export default function About() {
   };
 
   const keyPoints = [
-    "Personalized consultations to understand your bridal vision",
-    "Specialized in South Indian traditional Muhurtham & modern receptions",
-    "Flawless HD skin finish designed for high-resolution cameras",
-    "Dedicated on-venue services in Thiruvannamalai and Chengam"
+    "Personalized consultations to understand your unique bridal vision",
+    "Specialized in South Indian traditional Muhurtham & contemporary receptions",
+    "Flawless HD skin finish calibrated for 4K video with zero flashback",
+    "Dedicated on-venue vanity services in Thiruvannamalai and Chengam"
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#FAF7F2] relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 right-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+    <section id="about" className="py-24 lg:py-32 bg-[#FFF8F6] relative overflow-hidden">
+      {/* Background Bubbly Shapes */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 rounded-blob bg-cream-pink/70 blur-3xl pointer-events-none animate-float-slow"></div>
+      <div className="absolute bottom-10 left-0 w-80 h-80 rounded-blob-alt bg-blush/30 blur-3xl pointer-events-none animate-float-reverse"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionTitle
-          eyebrow="ABOUT THE ARTIST"
-          title="Meet the Artist Behind the Beauty"
+          eyebrow="ABOUT SILAMBARASI"
+          title="Behind Every Beautiful Transformation"
           subtitle="Passionate about bringing out your natural radiance with elegance, precision, and heartfelt artistry."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left: Artist Portrait (5 cols) */}
+          {/* Left: Asymmetrical Artist Portrait with Fluid Framing (5 cols) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 relative flex justify-center"
           >
-            {/* Elegant Double Border Frame */}
-            <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-2xl border border-gold/40 -z-10 hidden sm:block"></div>
+            {/* Soft Organic Backdrop Blob */}
+            <div className="absolute -inset-4 rounded-blob-alt bg-gradient-to-br from-cream-pink to-blush -z-10 opacity-70 transform -rotate-2"></div>
             
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-gold/30 bg-beige-soft group">
+            {/* Double Border Organic Frame */}
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-warmwhite bg-cream-pink group">
               <img
                 src="/images/artist/silambarasi-portrait.webp"
                 alt="Silambarasi - Professional Makeup Artist at SS Beauty Parlour"
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent"></div>
 
               {/* Bottom Card Overlay */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-ivory/95 backdrop-blur-md border border-gold/40 shadow-lg text-left">
-                <div className="text-xs uppercase tracking-widest text-gold font-sans font-semibold">
-                  Founder & Lead Artist
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-warmwhite/95 backdrop-blur-md border border-blush shadow-lg text-left">
+                <div className="text-[10px] uppercase tracking-widest text-rose-burgundy font-sans font-bold">
+                  Lead Artist & Founder
                 </div>
-                <div className="text-xl font-display font-medium text-espresso mt-0.5">
+                <div className="text-2xl font-display font-medium text-burgundy mt-0.5">
                   Silambarasi
                 </div>
-                <div className="text-xs text-taupe font-sans mt-1">
+                <div className="text-xs text-espresso/70 font-sans mt-1">
                   6+ Years Makeup Artistry · Thiruvannamalai & Chengam
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Artist Biography & Philosophy (7 cols) */}
+          {/* Right: Biography & Philosophy (7 cols) */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -75,43 +77,45 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7 flex flex-col text-left"
           >
-            {/* Philosophy quote badge */}
-            <div className="p-6 rounded-2xl bg-white/70 border-l-4 border-gold shadow-sm mb-8">
-              <p className="font-serif italic text-lg sm:text-xl text-espresso/90 leading-relaxed">
+            {/* Quote Badge */}
+            <div className="p-6 sm:p-7 rounded-3xl bg-cream-pink/70 border-l-4 border-burgundy shadow-sm mb-6">
+              <p className="font-serif italic text-lg sm:text-xl text-burgundy leading-relaxed">
                 "{BUSINESS_CONFIG.artist.bioIntro}"
               </p>
             </div>
 
-            {/* Narrative text */}
-            <div className="space-y-4 text-base sm:text-lg text-taupe font-sans font-light leading-relaxed mb-8">
+            {/* Biography Copy */}
+            <div className="space-y-4 text-base sm:text-lg text-espresso/80 font-sans font-light leading-relaxed mb-8">
               <p>
                 {BUSINESS_CONFIG.artist.bioFull}
               </p>
               <p>
-                From timeless South Indian Muhurtham traditions to glamorous evening receptions, Silambarasi brings a calm, warm, and attentive presence to your most cherished milestones. She believes makeup should never mask your natural beauty, but gently elevate it.
+                From timeless South Indian Muhurtham silk draping to modern reception glam, Silambarasi brings a calm, warm, and meticulous touch to your wedding preparations. Makeup is an art, and every brushstroke honors the beauty already present in you.
               </p>
             </div>
 
-            {/* Key Approach Bullet Points */}
+            {/* Key Highlights */}
             <div className="space-y-3 mb-10">
               {keyPoints.map((point, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-espresso/80 font-sans">
+                  <div className="w-5 h-5 rounded-full bg-cream-pink text-rose-burgundy flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="text-sm sm:text-base text-espresso/85 font-sans">
                     {point}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* CTA Button */}
+            {/* Pill Button */}
             <div>
               <button
                 onClick={scrollToPortfolio}
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-espresso hover:bg-espresso-soft text-ivory font-sans text-xs uppercase tracking-widest font-medium transition-all duration-300 shadow-md group"
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-burgundy hover:bg-burgundy-rose text-warmwhite font-sans text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-burgundy-glow group"
               >
-                <span>Explore My Portfolio</span>
-                <ArrowRight className="w-4 h-4 text-gold group-hover:translate-x-1 transition-transform" />
+                <span>EXPLORE MY PORTFOLIO</span>
+                <ArrowRight className="w-4 h-4 text-warmwhite group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </motion.div>
